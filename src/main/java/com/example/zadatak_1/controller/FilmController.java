@@ -14,10 +14,10 @@ public class FilmController {
         this.filmRepository = filmRepository;
     }
 
-    @RequestMapping("/film")
+    @RequestMapping("/filmovi")
     public String Filmovi(Model model){
 
-        model.addAttribute( "film",filmRepository.findAll());
-        return "film";
+        model.addAttribute( "filmovi",filmRepository.findAll());
+        return "filmovi/list";
     }
 }

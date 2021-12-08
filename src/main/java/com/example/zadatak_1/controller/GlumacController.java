@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 @Controller
 public class GlumacController {
 
@@ -15,10 +16,10 @@ public class GlumacController {
         this.glumacRepository = glumacRepository;
     }
 
-    @RequestMapping("/glumac")
+    @RequestMapping("/glumci")
     public String Glumci(Model model){
 
-        model.addAttribute( "glumac",glumacRepository.findAll());
-        return "glumac";
+        model.addAttribute(  "glumci", glumacRepository.findAll());
+        return "glumci/list";
     }
 }
