@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Framework</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<body>
+</head>
+
+<h1>Spisak Glumaca</h1>
+
+<table class="table table-hover ">
+    <td><a th:href="@{'/glumci/novi_glumac'}" class="btn btn-primary"><i class="fas fa-video ml-1"> Dodaj_Glumca</i></a></td>
+    <tr>
+        <th>ID</th>
+        <th>Ime</th>
+        <th>Prezime</th>
+    </tr>
+    <!--/*@thymesVar id="glumci" type="com.example.zadatak_1.model.Glumac"*/-->
+    <tr th:each="glumac : ${glumci}">
+        <td th:text="${glumac.id}">12335</td>
+        <td th:text="${glumac.ime}"> Robert</td>
+        <td th:text="${glumac.prezime}">Deniro</td>
+
+        <td><a href="#" th:href="@{'/glumci/glumac_info/' + ${glumac.id}}">Info</a></td>
+        <td><a href="#" th:href="@{'/glumci/edit/' + ${glumac.id}}">Izmeni</a></td>
+        <td><a href="#" th:href="@{'/glumci/delete/' + ${glumac.id}}">Izbrisi</a></td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -25,17 +25,17 @@ public class Film {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToMany(mappedBy = "filmovi")
-    private Set<Glumac> glumci=new HashSet<>();
+    @ManyToMany(mappedBy = "film",  cascade = { CascadeType.ALL })
+    private Set<Glumac> glumac=new HashSet<>();
 
-    @Column(name = "Naziv")
-    private String Naziv;
+    @Column(name = "naziv")
+    private String naziv;
 
-    @Column(name = "Godina")
-    private String Godina;
+    @Column(name = "godina")
+    private String godina;
 
-    @Column(name = "Boja")
-    private String Boja;
+    @Column(name = "boja")
+    private String boja;
 
 
 

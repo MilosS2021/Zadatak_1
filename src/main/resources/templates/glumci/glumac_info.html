@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Framework</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous" />
+</head>
+<body>
+<h1>Info Glumca</h1>
+
+<table class="table table-hover ">
+    <tr>
+        <th>ID</th>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>Datum rodjenja</th>
+    </tr>
+
+
+    <form action="#" th:action="@{/glumci/glumac_info/{id}(id=${info.get().id})}" th:object="${info}" method="get">
+        <td th:text="${info.get().id}">123</td>
+        <td th:text="${info.get().ime}"> Danilo</td>
+        <td th:text="${info.get().prezime}"> Stojkovic</td>
+        <td th:text="${info.get().datumrodjenja}">1.1.1950</td>
+    </form>
+
+</table>
+
+</body>
+</html>

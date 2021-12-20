@@ -30,23 +30,23 @@ public class Glumac {
 
     @ManyToMany
     @JoinTable(name="film_glumac",joinColumns = @JoinColumn(name="glumac_id"),inverseJoinColumns = @JoinColumn(name="film_id"))
-    private Set<Film> filmovi=new HashSet<>();
+    private Set<Film> film=new HashSet<>();
 
     @Column(name = "Ime")
-    private String Ime;
+    private String ime;
 
     @Column(name = "Prezime")
-    private String Prezime;
+    private String prezime;
 
     @Column(name = "Datum_rodjenja")
-    private String Datumrodjenja;
+    private String datumrodjenja;
 
 
     @Column(name = "Mesto")
-    private String Mesto;
+    private String mesto;
 
     @Column(name = "Oskar")
-    private String Oskar;
+    private String oskar;
 
 
 }
