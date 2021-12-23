@@ -1,8 +1,11 @@
 package com.example.zadatak_1.controller;
 
 
+import com.example.zadatak_1.model.Film;
 import com.example.zadatak_1.model.Glumac;
 import com.example.zadatak_1.repository.GlumacRepository;
+import com.example.zadatak_1.service.FilmService;
+import com.example.zadatak_1.service.GlumacService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 
 @Controller
 public class GlumacController {
@@ -22,6 +27,20 @@ public class GlumacController {
 
     public GlumacController(GlumacRepository glumacRepository) {
         this.glumacRepository = glumacRepository;
+    }
+
+
+    @Autowired
+    private GlumacService service;
+    @RequestMapping(path = {"/glumci/pretraga"})
+    public String home(Glumac glumci, Model model, String keyword) {
+        if(keyword!=null) {
+            List<Glumac> glumci_list = service.getByKeyword(keyword);
+            model.addAttribute("glumci", glumci_list);
+        }else {
+            List<Glumac> glumci_list = service.getAllGlumac();
+            model.addAttribute("glumci", glumci_list);}
+        return "/glumci/glumac_list";
     }
 
     @RequestMapping("/glumci")

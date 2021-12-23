@@ -13,7 +13,14 @@
 </head>
 
 <h1>Spisak Glumaca</h1>
+<form th:action="@{/glumci/pretraga}" method="get">
 
+
+    <!--/*@thymesVar id="keyword" type="keyword"*/-->
+    <input type="text" name="keyword" th:value="${keyword}"  placeholder="Filtriranje po imenu , prezimenu" size="50" >
+    <button type="submit" class="btn btn-info" >Pronadji</button>
+    <button type="submit" class="btn btn-info" >Resetuj</button>
+</form>
 <table class="table table-hover ">
     <td><a th:href="@{'/glumci/novi_glumac'}" class="btn btn-primary"><i class="fas fa-video ml-1"> Dodaj_Glumca</i></a></td>
     <tr>

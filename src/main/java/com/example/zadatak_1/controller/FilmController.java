@@ -2,6 +2,7 @@ package com.example.zadatak_1.controller;
 
 import com.example.zadatak_1.model.Film;
 import com.example.zadatak_1.repository.FilmRepository;
+import com.example.zadatak_1.service.FilmService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -13,8 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.validation.BindingResult;
 
+import java.util.List;
+
 @Controller
 public class FilmController {
+
+
 
     @Autowired
     private final FilmRepository filmRepository;
@@ -22,6 +27,20 @@ public class FilmController {
     public FilmController(FilmRepository filmRepository) {
         this.filmRepository = filmRepository;
     }
+    @Autowired
+    private FilmService service;
+    @RequestMapping(path = {"/filmovi/pretraga"})
+    public String home(Film film, Model model, String keyword) {
+        if(keyword!=null) {
+            List<Film> film_list = service.getByKeyword(keyword);
+            model.addAttribute("filmovi", film_list);
+        }else {
+            List<Film> film_list = service.getAllFilms();
+            model.addAttribute("filmovi", film_list);}
+        return "/filmovi/film_list";
+    }
+
+
 
     @RequestMapping("/filmovi")
     public String FilmList(Model model){
